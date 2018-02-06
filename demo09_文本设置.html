@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>文本设置</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="fabric.js"></script>
+    </head>
+    <body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <script type="text/javascript">
+        var canvas =new fabric.Canvas('c'); // 利用fabric找到我们的画布
+        var text = new fabric.Text('hello world', { 
+            left: 100,
+            top: 100,
+            fontSize: 40 ,
+            fontFamily: 'Comic Sans',
+            fontWeight: 'bold'//加粗字体
+        });
+        canvas.add(text);
+    </script>
+    </body>
+</html>

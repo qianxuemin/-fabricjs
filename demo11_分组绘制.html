@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>分组绘制</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <script type="text/javascript">
+    var canvas = new fabric.Canvas('c');
+    //绘制圆形
+    var circle = new fabric.Circle({
+        radius: 100,
+        fill: '#eef',
+        scaleY: 0.5,
+        originX: 'center', //调整中心点的X轴坐标
+        originY: 'center' //调整中心点的Y轴坐标
+    });
+    //绘制文本
+    var text = new fabric.Text('Hello World', {
+        fontSize: 30,
+        originX: 'center',
+        originY: 'center'
+    })
+    //进行组合
+    var group = new fabric.Group([circle, text], {
+        left: 150,
+        top: 100,
+        angle: 10
+    })
+    canvas.add(group);
+
+
+    // 通过group.item()来确定要改变的单独对象，然后就可以像以前一样修改它们了。
+    group.item(0).set({fill:'red'});
+    group.item(1).set({
+        text: 'trololo',
+        fill: 'white'
+    });
+    // 用到了 new fabric.Group( );来把两个对象组合到一起，它接收两个参数，第一个参数是一个数组，数组是要组合的对象的名称；第二个是组合到一起的对象的共同属性。
+
+
+//2 --------------------------上边的例子是把两个图形按照中心点组合的，我们还可以分别设置它们的位置，再进行组合
+    var canvas = new fabric.Canvas('c');
+ 
+    var circle1 = new fabric.Circle({
+        radius: 50,
+        fill: 'red',
+        left: 0
+    });
+    var circle2 = new fabric.Circle({
+        radius: 50,
+        fill: 'green',
+        left: 100
+    });
+    var circle3 = new fabric.Circle({
+        radius: 50,
+        fill: 'blue',
+        left: 200
+    });
+    var group = new fabric.Group([circle1, circle2, circle3], {
+        left: 200,
+        top: 100
+    });
+     
+    canvas.add(group);
+
+
+// 3 --------------------------图片组合是回调方法的嵌套
+ 
+fabric.Image.fromURL('img-demo6.jpg', function(img) {
+    var img1 = img.scale(0.1).set({
+        left: 100,
+        top: 100
+    });
+    fabric.Image.fromURL('img-demo6.jpg', function(img) {
+        var img2 = img.scale(0.1).set({
+            left: 175,
+            top: 175
+        });
+        fabric.Image.fromURL('img-demo6.jpg', function(img) {
+            var img3 = img.scale(0.1).set({ left: 250, top: 250 });
+ 
+            canvas.add(new fabric.Group([img1, img2, img3], { left: 200, top: 200 }));
+        });
+    });
+});
+    </script>
+</body>
+
+</html>

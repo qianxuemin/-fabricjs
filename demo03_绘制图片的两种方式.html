@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>画图片</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <!-- <img src="http://bpic.wotucdn.com/27/26/44/27264416-e13e71f402970ed9b7f76c903ddf700c-0.jpg" id="my-img"> -->
+    <script type="text/javascript">
+    var canvas = new fabric.Canvas('c'); // 利用fabric找到我们的画布
+
+    // 第一种方式
+    /*var imgElement = document.getElementById('my-img'); //声明我们的图片
+
+    var imgInstance = new fabric.Image(imgElement, { //设置图片在canvas中的位置和样子
+        left: 100,
+        top: 100,
+        width: 200,
+        height: 100,
+        angle: 30,
+        opacity:0.5,
+        scale:5
+    });
+
+    canvas.add(imgInstance); //加入到canvas中*/
+
+    // 第二种方式
+    fabric.Image.fromURL('http://bpic.wotucdn.com/27/26/44/27264416-e13e71f402970ed9b7f76c903ddf700c-0.jpg', function(oImg) {
+        oImg.scale(0.3); //图片缩小10倍
+        canvas.add(oImg);
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>画圆形三角形</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <script type="text/javascript">
+    var canvas = new fabric.Canvas('c'); //声明画布
+
+    //开始绘画方形
+    var rect = new fabric.Rect({
+        left: 100, //距离画布左侧的距离，单位是像素
+        top: 100, //距离画布上边的距离
+        fill: 'red', //填充的颜色
+        width: 30, //方形的宽度
+        height: 30 //方形的高度
+    });
+
+    canvas.add(rect); //把绘画好的方形添加到画布上
+
+
+    //开始画圆形
+    var circle = new fabric.Circle({
+        radius: 50, //圆的半径
+        fill: 'green', //填充颜色
+        left: 200, //距离画布左侧的距离，单位是像素
+        top: 200 //距离画布上边的距离
+    });
+
+    canvas.add(circle); //把绘画好的圆形添加到画布上
+
+
+    //开始画三角形
+    var triangle = new fabric.Triangle({
+        width: 80,
+        height: 100,
+        fill: 'blue',
+        left: 50,
+        top: 50
+    });
+
+    canvas.add(triangle); //把绘画好形状添加到画布上
+    </script>
+</body>
+
+</html>

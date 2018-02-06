@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>用路径画不规则图形</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <script type="text/javascript">
+    var canvas = new fabric.Canvas('c'); // 利用fabric找到我们的画布
+    var path = new fabric.Path('M 0 0 L 200 100 L 170 200 z');
+    path.set({ left: 120, top: 120, fill: 'red' });
+    canvas.add(path);
+    </script>
+</body>
+
+</html>

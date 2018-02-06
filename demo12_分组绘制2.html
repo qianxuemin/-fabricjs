@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>分组绘制2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <script type="text/javascript">
+    var canvas = new fabric.Canvas('c');
+    //声明一个正方形
+    var rect = new fabric.Rect({
+        left: 100,
+        top: 100,
+        width: 100,
+        height: 100,
+        fill: 'red'
+    });
+    //声明一个圆形
+    var circle = new fabric.Circle({
+        radius: 50,
+        top: 100,
+        left: 200,
+        fill: 'green'
+    })
+    //把声明好的正方形和圆形进行组合
+    var group = new fabric.Group([rect, circle], { left: 200, top: 100 });
+    //在组合好之后我们又声明了一个正方形，并加入到组合图形的中间
+    group.add(new fabric.Rect({
+        fill: 'blue',
+        width: 100,
+        height: 100,
+        originX: 'center',
+        originY: 'center'
+    }));
+    //*******************上面的添加方法之后并没有更新组合区域，也就是说添加的图形有可能被无情的裁切掉。如果遇到这种情况，需要使用addWithUpdate( )来进行添加对象，用这种方法可以重新刷新组合区域。
+    /*group.addWithUpdate(new fabric.Rect({
+      left: group.getLeft(),
+      top: group.getTop(),
+      originX: 'center',
+      originY: 'center'
+    }));*/
+
+    // create a group with copies of existing (2) objects
+
+    /*var group = new fabric.Group([
+      canvas.item(0).clone(),
+      canvas.item(1).clone()
+    ]);
+     
+    // remove all objects and re-render
+    canvas.clear().renderAll();
+     
+    // add group onto canvas
+    canvas.add(group);*/
+    canvas.add(group);
+    </script>
+</body>
+
+</html>

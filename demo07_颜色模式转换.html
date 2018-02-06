@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>颜色模式转换</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <script type="text/javascript">
+    var canvas = new fabric.Canvas('c'); // 利用fabric找到我们的画布
+
+// 1.定义颜色的方式：
+        // new fabric.Color('#f55');
+        // new fabric.Color('#123123');
+        // new fabric.Color('356735');
+        // new fabric.Color('rgb(100,0,100)');
+        // new fabric.Color('rgba(10, 20, 30, 0.5)');
+
+// 2.颜色模式的转换方法
+        // toHex( ):颜色模式转换成16进制;
+        // toRgb( ):颜色模式转化成RGB;
+        // toRgba( ):颜色模式转换成可以设置透明度的RGB;
+
+// 3.颜色不仅仅可以转换，你还可以用其他颜色进行覆盖或者添加滤镜效果。
+        // var redish = new fabric.Color('#f55');
+        // var greenish = new fabric.Color('#5f5');
+         
+        // redish.overlayWith(greenish).toHex(); // "AAAA55"
+        // redish.toGrayscale().toHex(); // "A1A1A1"
+
+    var color = new fabric.Color('#ccc').toRgb();
+    console.log(color);
+    var rect = new fabric.Rect({
+        left: 100,
+        top: 100,
+        width: 100,
+        height: 100,
+        fill: color
+    });
+
+    canvas.add(rect);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>动画设置</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="800"></canvas>
+    <script type="text/javascript">
+    var canvas = new fabric.Canvas('c'); // 利用fabric找到我们的画布
+    var rect = new fabric.Rect({ // 创建我们的正方形
+        left: 100,
+        top: 100,
+        fill: 'red',
+        width: 30,
+        height: 30
+    });
+    rect.set('angle', 0); // 设置正方形的初始角度是0度
+    //下边设置了动画属性，让角度旋转到360度 可以是绝对值 也可以是相对值
+   // rect.animate('angle', 360, {
+        rect.animate('angle', '-=60', {
+        onChange: canvas.renderAll.bind(canvas),
+        duration: 1000,    // 设置动画持续的时间
+        easing: fabric.util.ease.easeOutBounce // 设置动画的缓动属性
+    })
+    canvas.add(rect); // 把我们创建好的正方形加到画布上
+    </script>
+</body>
+
+</html>
